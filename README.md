@@ -55,12 +55,13 @@ data = pd.read_csv(file_path)
 # Display first few rows of the dataset
 data.head()
 
+## Analysis Steps
 
-2. Check for Null Values, Column Info, and Descriptive Statistics
+### 2. Check for Null Values, Column Info, and Descriptive Statistics
+
 Check the dataset for any null values and understand its structure and basic statistics.
 
-python
-Copy code
+```python
 # Check for null values
 null_values = data.isnull().sum()
 print(null_values)
@@ -71,19 +72,21 @@ column_info = data.info()
 # Display descriptive statistics
 descriptive_stats = data.describe()
 print(descriptive_stats)
-3. Convert Date Column to Datetime
+
+### 3. Convert Date Column to Datetime
+
 Convert the 'Date' column to a datetime format for time series analysis.
 
-python
-Copy code
+```python
 # Convert the Date column into datetime datatype
 data['Date'] = pd.to_datetime(data['Date'])
 data.head()
-4. Analyze the Trend of Instagram Reach Over Time
+
+### 4. Analyze the Trend of Instagram Reach Over Time
+
 Visualize the trend of Instagram reach using a line chart.
 
-python
-Copy code
+```python
 # Analyze the trend of Instagram reach over time using a line chart
 plt.figure(figsize=(12, 6))
 plt.plot(data['Date'], data['Instagram reach'])
@@ -91,11 +94,12 @@ plt.xlabel('Date')
 plt.ylabel('Instagram Reach')
 plt.title('Trend of Instagram Reach Over Time')
 plt.show()
-5. Analyze Instagram Reach for Each Day
+
+### 5. Analyze Instagram Reach for Each Day
+
 Visualize Instagram reach for each day of the week using a bar chart.
 
-python
-Copy code
+```python
 # Create a 'Day' column
 data['Day'] = data['Date'].dt.day_name()
 
@@ -106,30 +110,32 @@ plt.xlabel('Day')
 plt.ylabel('Total Instagram Reach')
 plt.title('Instagram Reach for Each Day')
 plt.show()
-6. Analyze the Distribution of Instagram Reach
+### 6. Analyze the Distribution of Instagram Reach
+
 Use a box plot to understand the distribution and identify outliers.
 
-python
-Copy code
+```python
 # Analyze the distribution of Instagram reach using a box plot
 plt.figure(figsize=(12, 6))
 data.boxplot(column='Instagram reach')
 plt.ylabel('Instagram Reach')
 plt.title('Distribution of Instagram Reach')
 plt.show()
-7. Calculate Mean, Median, and Standard Deviation of Instagram Reach for Each Day
+
+### 7. Calculate Mean, Median, and Standard Deviation of Instagram Reach for Each Day
+
 Group the data by day and calculate statistical metrics.
 
-python
-Copy code
+```python
 # Group the DataFrame by the Day column and calculate the mean, median, and standard deviation of the Instagram reach for each day
 grouped_data = data.groupby('Day')['Instagram reach'].agg(['mean', 'median', 'std']).reset_index()
 print(grouped_data)
-8. Visualize Reach for Each Day of the Week
+
+### 8. Visualize Reach for Each Day of the Week
+
 Create a bar chart to visualize average reach for each day of the week.
 
-python
-Copy code
+```python
 # Create a bar chart to visualize the reach for each day of the week
 plt.figure(figsize=(12, 6))
 data.groupby('Day')['Instagram reach'].mean().plot(kind='bar')
@@ -137,21 +143,23 @@ plt.xlabel('Day')
 plt.ylabel('Mean Instagram Reach')
 plt.title('Average Instagram Reach for Each Day of the Week')
 plt.show()
-9. Check Trends and Seasonal Patterns
+
+### 9. Check Trends and Seasonal Patterns
+
 Perform seasonal decomposition to identify trends and seasonal patterns.
 
-python
-Copy code
+```python
 # Decompose the time series data
 data.set_index('Date', inplace=True)
 result = seasonal_decompose(data['Instagram reach'], model='additive', period=30)
 result.plot()
 plt.show()
-10. Forecast Instagram Reach Using SARIMA Model
+
+### 10. Forecast Instagram Reach Using SARIMA Model
+
 Fit a SARIMA model to the data and make predictions. Evaluate the model using MAE and MSE.
 
-python
-Copy code
+```python
 # Step 10: Forecast Instagram Reach Using SARIMA Model
 
 # Import necessary libraries
@@ -210,5 +218,12 @@ mae = mean_absolute_error(test['Instagram reach'], forecast_df['mean'])
 mse = mean_squared_error(test['Instagram reach'], forecast_df['mean'])
 print(f'Mean Absolute Error: {mae}')
 print(f'Mean Squared Error: {mse}')
-Contributing
+
+## Contributing
+
 Contributions are welcome! Please fork the repository and submit a pull request for any improvements.
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
