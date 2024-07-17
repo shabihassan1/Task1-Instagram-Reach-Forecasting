@@ -18,7 +18,7 @@ This repository contains a comprehensive analysis and forecasting of Instagram r
   - [9. Check Trends and Seasonal Patterns](#9-check-trends-and-seasonal-patterns)
   - [10. Forecast Instagram Reach Using SARIMA Model](#10-forecast-instagram-reach-using-sarima-model)
 - [Contributing](#contributing)
-- [License](#license)
+
 
 ## Introduction
 
@@ -227,7 +227,5 @@ print(f'Mean Squared Error: {mse}')
 
 Contributions are welcome! Please fork the repository and submit a pull request for any improvements.
 
-## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
 
