@@ -54,7 +54,7 @@ data = pd.read_csv(file_path)
 
 # Display first few rows of the dataset
 data.head()
-
+'''
 ### 2. Check for Null Values, Column Info, and Descriptive Statistics
 
 Check the dataset for any null values and understand its structure and basic statistics.
