@@ -40,6 +40,7 @@ In this project, we perform the following steps:
 Load necessary libraries and the dataset for analysis.
 
 ```python
+
 import pandas as pd
 import matplotlib.pyplot as plt
 from statsmodels.tsa.seasonal import seasonal_decompose
@@ -54,7 +55,7 @@ data = pd.read_csv(file_path)
 
 # Display first few rows of the dataset
 data.head()
-\`\`\`
+```
 
 ### 2. Check for Null Values, Column Info, and Descriptive Statistics
 
@@ -71,7 +72,7 @@ column_info = data.info()
 # Display descriptive statistics
 descriptive_stats = data.describe()
 print(descriptive_stats)
-
+```
 ### 3. Convert Date Column to Datetime
 
 Convert the 'Date' column to a datetime format for time series analysis.
@@ -80,7 +81,7 @@ Convert the 'Date' column to a datetime format for time series analysis.
 # Convert the Date column into datetime datatype
 data['Date'] = pd.to_datetime(data['Date'])
 data.head()
-
+```
 ### 4. Analyze the Trend of Instagram Reach Over Time
 
 Visualize the trend of Instagram reach using a line chart.
@@ -94,6 +95,7 @@ plt.ylabel('Instagram Reach')
 plt.title('Trend of Instagram Reach Over Time')
 plt.show()
 
+```
 ### 5. Analyze Instagram Reach for Each Day
 
 Visualize Instagram reach for each day of the week using a bar chart.
@@ -109,6 +111,7 @@ plt.xlabel('Day')
 plt.ylabel('Total Instagram Reach')
 plt.title('Instagram Reach for Each Day')
 plt.show()
+```
 ### 6. Analyze the Distribution of Instagram Reach
 
 Use a box plot to understand the distribution and identify outliers.
@@ -120,7 +123,7 @@ data.boxplot(column='Instagram reach')
 plt.ylabel('Instagram Reach')
 plt.title('Distribution of Instagram Reach')
 plt.show()
-
+```
 ### 7. Calculate Mean, Median, and Standard Deviation of Instagram Reach for Each Day
 
 Group the data by day and calculate statistical metrics.
@@ -129,6 +132,7 @@ Group the data by day and calculate statistical metrics.
 # Group the DataFrame by the Day column and calculate the mean, median, and standard deviation of the Instagram reach for each day
 grouped_data = data.groupby('Day')['Instagram reach'].agg(['mean', 'median', 'std']).reset_index()
 print(grouped_data)
+```
 
 ### 8. Visualize Reach for Each Day of the Week
 
@@ -142,7 +146,7 @@ plt.xlabel('Day')
 plt.ylabel('Mean Instagram Reach')
 plt.title('Average Instagram Reach for Each Day of the Week')
 plt.show()
-
+```
 ### 9. Check Trends and Seasonal Patterns
 
 Perform seasonal decomposition to identify trends and seasonal patterns.
@@ -153,7 +157,7 @@ data.set_index('Date', inplace=True)
 result = seasonal_decompose(data['Instagram reach'], model='additive', period=30)
 result.plot()
 plt.show()
-
+```
 ### 10. Forecast Instagram Reach Using SARIMA Model
 
 Fit a SARIMA model to the data and make predictions. Evaluate the model using MAE and MSE.
@@ -218,6 +222,7 @@ mse = mean_squared_error(test['Instagram reach'], forecast_df['mean'])
 print(f'Mean Absolute Error: {mae}')
 print(f'Mean Squared Error: {mse}')
 
+```
 ## Contributing
 
 Contributions are welcome! Please fork the repository and submit a pull request for any improvements.
